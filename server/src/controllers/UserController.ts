@@ -46,7 +46,10 @@ export const loginUser = async (req: Request, res: Response) => {
     if (!isPasswordValid)
       return res.status(401).json({ message: "Invalid Credentials" });
 
-    res.clearCookie("user");
+    res.clearCookie("user", {
+      path: "/",
+      httpOnly: true,
+    });
     const token = createToken(user);
 
     res.setHeader("Set-Cookie", `user=${token}; Path=/; httpOnly=true`);
@@ -85,7 +88,10 @@ export const UserDetails = async (req: Request, res: Response) => {
 
 export const userLogout = (req: Request, res: Response) => {
   try {
-    res.clearCookie("user");
+    res.clearCookie("user", {
+      path: "/",
+      httpOnly: true,
+    });
     res.json({ message: "Logout successful" }).status(200);
   } catch (error) {
     console.log(error);
