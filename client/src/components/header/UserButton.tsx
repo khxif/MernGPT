@@ -3,10 +3,12 @@
 import { getUser, logoutUser } from "@/lib/fetchers";
 import { useAppStore } from "@/store/store";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import { shallow } from "zustand/shallow";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -17,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import UserAvatar from "./UserAvatar";
-import { shallow } from "zustand/shallow";
+import { deleteCookie } from "@/lib/action";
 
 interface UserButtonProps {
   userCookie: RequestCookie | undefined;
@@ -40,9 +42,13 @@ export default function UserButton({ userCookie }: UserButtonProps) {
 
   const handleLogOut = async () => {
     try {
-      const data = await logoutUser();
+      // const data = await logoutUser();
+      // setUser(undefined);
+      // cookie().delete('user')
+      // toast.info(data?.message);
+      deleteCookie()
       setUser(undefined);
-      toast.info(data?.message);
+      toast.info('Logged out')
       router.refresh();
     } catch (error) {
       console.log(error);

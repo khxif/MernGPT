@@ -23,6 +23,7 @@ export default function ChatInput({
     e.preventDefault();
     if (!message) return;
     try {
+      setMessage("");
       const res = await fetch("/api/chat/chat-completion", {
         method: "POST",
         body: JSON.stringify({ message }),
