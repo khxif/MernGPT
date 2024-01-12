@@ -4,7 +4,7 @@ const nextConfig = {
         return [
             {
                 source: "/:path*",
-                destination: "http://localhost:5000/:path*",
+                destination: process.env.NODE_ENV === "production" ? "https://mern-gpt-server.vercel.app/:path*" : "http://localhost:5000/:path*",
             },
         ];
     },
