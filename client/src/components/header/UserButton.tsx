@@ -1,13 +1,13 @@
 "use client";
 
-import { getUser, logoutUser } from "@/lib/fetchers";
+import { deleteCookie } from "@/lib/action";
+import { getUser } from "@/lib/fetchers";
 import { useAppStore } from "@/store/store";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 import { shallow } from "zustand/shallow";
 import { Button } from "../ui/button";
 import {
@@ -19,7 +19,6 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import UserAvatar from "./UserAvatar";
-import { deleteCookie } from "@/lib/action";
 
 interface UserButtonProps {
   userCookie: RequestCookie | undefined;
@@ -46,9 +45,9 @@ export default function UserButton({ userCookie }: UserButtonProps) {
       // setUser(undefined);
       // cookie().delete('user')
       // toast.info(data?.message);
-      deleteCookie()
+      deleteCookie();
       setUser(undefined);
-      toast.info('Logged out')
+      toast.success("Logged out");
       router.refresh();
     } catch (error) {
       console.log(error);

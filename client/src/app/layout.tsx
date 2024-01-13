@@ -4,7 +4,7 @@ import QueryProvider from "@/providers/query-provider";
 import ThemeProvider from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Toaster } from "sonner";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { cookies } from "next/headers";
 
@@ -30,7 +30,7 @@ export default function RootLayout({
           <QueryProvider>
             {children}
             <DeleteDialog userCookie={userCookie} />
-            <Toaster richColors position="top-right" />
+            <Toaster position="top-right" />
           </QueryProvider>
         </ThemeProvider>
       </body>
