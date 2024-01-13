@@ -2,8 +2,6 @@ import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 import { Skeleton } from "../ui/skeleton";
 import Logo from "./Logo";
-import Link from "next/link";
-import { Button } from "../ui/button";
 
 const DarkModeToggle = dynamic(() => import("./DarkModeToggle"), {
   ssr: false,
@@ -28,9 +26,6 @@ export default function Header() {
       <Logo />
 
       <div className="flex items-center space-x-5">
-        <Link href="/chat">
-          <p className="font-semibold hover:opacity-80">Chat Now!</p>
-        </Link>
         <DarkModeToggle />
         <UserButton userCookie={userCookie} />
       </div>
