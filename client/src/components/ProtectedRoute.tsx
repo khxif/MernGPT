@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children }: { children: ReactNode }) {
   const user = useAppStore((state) => state.user);
 
   useLayoutEffect(() => {
-    if (!user?.username) return redirect("/");
+    if (!user?.username) return redirect("/login");
     console.log(user.username);
   }, [user]);
   return <>{children}</>;

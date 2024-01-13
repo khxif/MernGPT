@@ -6,7 +6,7 @@ export default async function HomePage() {
   return (
     <div
       className="h-full flex flex-col  py-6 px-4 md:px-0 overflow-y-scroll
-     max-w-6xl mx-auto scrollbar-hide pb-32"
+     max-w-6xl mx-auto scrollbar-hide pb-36"
     >
       <h1 className="text-3xl text-center font-bold py-6 md:py-8">MernGPT</h1>
 
