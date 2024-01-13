@@ -1,5 +1,4 @@
 import ChatBody from "@/components/chat/ChatBody";
-import ChatInput from "@/components/chat/ChatInput";
 import { cookies } from "next/headers";
 
 export default async function ChatPage() {

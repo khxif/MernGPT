@@ -69,9 +69,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <RevealAnimation>
-        <div className="w-full max-w-6xl md:mx-auto px-4 md:px-0 md:mt-10">
-          <Link href="/chat">
+      <div className="w-full max-w-6xl mx-auto md:mt-10">
+        <Link href="/chat">
+          <RevealAnimation>
             <span
               className="bg-slate-400/40 rounded-lg hover:opacity-80 p-4 flex items-center 
             justify-between w-full"
@@ -79,9 +79,9 @@ export default async function HomePage() {
               Get started with GPT
               <ArrowRight className="w-6 h-6" />
             </span>
-          </Link>
-        </div>
-      </RevealAnimation>
+          </RevealAnimation>
+        </Link>
+      </div>
     </div>
   );
 }

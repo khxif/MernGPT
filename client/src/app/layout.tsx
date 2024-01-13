@@ -21,15 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const cookie = cookies();
-  const userCookie = cookie.get("user")
+  const userCookie = cookie.get("user");
   return (
     <html lang="en">
       <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
-      <body className={cn(inter.className, "h-screen overflow-hidden")}>
+      <body className={cn(inter.className, "h-screen")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <QueryProvider>
             {children}
-            <DeleteDialog userCookie={userCookie}/>
+            <DeleteDialog userCookie={userCookie} />
             <Toaster richColors position="top-right" />
           </QueryProvider>
         </ThemeProvider>

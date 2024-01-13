@@ -17,7 +17,7 @@ export default function ChatBody({ userCookie }: ChatBodyProps) {
   console.log(chats);
   return (
     <>
-      <div className="flex-1 h-full overflow-y-scroll py-6 pb-44 scrollbar-hide">
+      <div className="flex-1 h-full overflow-y-scroll py-4 md:py-6 pb-10 md:pb-44 scrollbar-hide">
         {chats?.map((chat: any, i: number) => (
           <ChatRow key={i} chat={chat} />
         ))}
