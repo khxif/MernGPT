@@ -4,9 +4,10 @@ import QueryProvider from "@/providers/query-provider";
 import ThemeProvider from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { cookies } from "next/headers";
+import { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,17 +16,13 @@ export const metadata: Metadata = {
   description: "Have a fun and factful conversation with MernGPT",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const cookie = cookies();
   const userCookie = cookie.get("user");
   return (
     <html lang="en">
       <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
-      <body className={cn(inter.className, "h-screen")}>
+      <body className={cn(inter.className, "h-screen overflow-hidden")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <QueryProvider>
             {children}
