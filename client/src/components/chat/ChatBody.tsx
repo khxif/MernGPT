@@ -1,10 +1,11 @@
 "use client";
 
 import useChats from "@/hooks/useChats";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 import ChatInput from "./ChatInput";
 import ChatRow from "./ChatRow";
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 interface ChatBodyProps {
   userCookie: RequestCookie | undefined;
@@ -24,7 +25,11 @@ export default function ChatBody({ userCookie }: ChatBodyProps) {
           (chats?.length === 0 && (
             <p className="text-center font-medium">No messages!</p>
           ))}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <div className="w-full flex items-center justify-center h-full">
+            <ClipLoader color="#36d7b7" />
+          </div>
+        )}
         {isError && (
           <p className="text-center font-semibold">Internal server error!</p>
         )}

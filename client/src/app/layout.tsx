@@ -24,12 +24,13 @@ export default function RootLayout({
   const userCookie = cookie.get("user")
   return (
     <html lang="en">
+      <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       <body className={cn(inter.className, "h-screen overflow-hidden")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <QueryProvider>
             {children}
             <DeleteDialog userCookie={userCookie}/>
-            <Toaster richColors position="top-left" />
+            <Toaster richColors position="top-right" />
           </QueryProvider>
         </ThemeProvider>
       </body>

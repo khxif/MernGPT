@@ -4,6 +4,7 @@ import { Send } from "lucide-react";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { FormEvent } from "react";
 import { useQueryClient } from "react-query";
+import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
@@ -23,6 +24,7 @@ export default function ChatInput({
     e.preventDefault();
     if (!message) return;
     try {
+      toast.loading("Let GPT cook!");
       setMessage("");
       const res = await fetch("/api/chat/chat-completion", {
         method: "POST",
@@ -35,6 +37,7 @@ export default function ChatInput({
       const data = await res.json();
       console.log(data);
       queryClient.invalidateQueries("chats");
+      toast.success("GPT has responded!");
     } catch (error) {
       console.log(error);
     }
