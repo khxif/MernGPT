@@ -24,8 +24,8 @@ export default function ChatInput({
     e.preventDefault();
     if (!message) return;
     try {
-      toast.loading("Let GPT cook!",{
-        id:"id"
+      toast.loading("Let GPT cook!", {
+        id: "id",
       });
       setMessage("");
       const res = await fetch("/api/chat/chat-completion", {
@@ -37,13 +37,14 @@ export default function ChatInput({
         },
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       queryClient.invalidateQueries("chats");
-      toast.success("GPT has responded!",{
-        id: 'id'
+      toast.success("GPT has responded!", {
+        id: "id",
       });
     } catch (error) {
       console.log(error);
+      toast.error((error as Error)?.message);
     }
   };
   return (

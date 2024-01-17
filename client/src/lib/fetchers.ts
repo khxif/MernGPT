@@ -8,7 +8,7 @@ const getUser = async (userCookie: RequestCookie | undefined) => {
     },
   });
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   if (data.username)
     return {
       email: data.email,
@@ -27,7 +27,7 @@ const logoutUser = async () => {
     },
   });
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
 
   return data;
 };
@@ -41,7 +41,7 @@ const fetchUserMessages = async (userCookie: RequestCookie | undefined) => {
     },
   });
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
 
   return data.chats;
 };

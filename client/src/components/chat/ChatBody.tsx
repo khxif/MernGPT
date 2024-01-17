@@ -14,7 +14,7 @@ interface ChatBodyProps {
 export default function ChatBody({ userCookie }: ChatBodyProps) {
   const [message, setMessage] = useState<string>("");
   const { chats, isError, isLoading } = useChats({ userCookie });
-  console.log(chats);
+  // console.log(chats);
   return (
     <>
       <div className="flex-1 h-full overflow-y-scroll pt-2 md:pt-6 pb-48 md:pb-40 scrollbar-hide">

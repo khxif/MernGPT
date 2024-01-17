@@ -9,7 +9,7 @@ export default function ProtectedRoute({ children }: { children: ReactNode }) {
 
   useLayoutEffect(() => {
     if (!user?.username) return redirect("/login");
-    console.log(user.username);
+    // console.log(user.username);
   }, [user]);
   return <>{children}</>;
 }
